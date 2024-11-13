@@ -31,6 +31,10 @@ public class ImageTransform {
         return new Image((int) srcImage.getWidth(), (int) srcImage.getHeight(), pixels, PixelFormat.RGB);
     }
 
+    public static Image greyscale(Image srcImage) {
+        return new Image((int) srcImage.getWidth(), (int) srcImage.getHeight(), srcImage.toByteArray(PixelFormat.GRAYSCALE), PixelFormat.GRAYSCALE);
+    }
+
     public static void main(String[] args) {
         Image srcImage = new Image("mscs-shield.png");
     
@@ -39,6 +43,7 @@ public class ImageTransform {
         System.out.println("1. Lighten");
         System.out.println("2. Green Shift");
         System.out.println("3. Invert");
+        System.out.println("4. Greyscale");
 
         System.out.print("> ");
         int choice = scan.nextInt();
@@ -48,6 +53,7 @@ public class ImageTransform {
             case 1 -> lighten(srcImage);
             case 2 -> greenShift(srcImage);
             case 3 -> invert(srcImage);
+            case 4 -> greyscale(srcImage);
         };
 
         CanvasWindow canvas = new CanvasWindow("img", 500, 500);
