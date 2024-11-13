@@ -26,7 +26,7 @@ public class ImageTransform {
     public static Image invert(Image srcImage) {
         byte[] pixels = srcImage.toByteArray(PixelFormat.RGB);
         for (int i = 0; i < pixels.length; i++) {
-            pixels[i] = (byte) (255 - pixels[i]);
+            pixels[i] = (byte) (pixels[i] ^ 0xFFFFFF);
         }
         return new Image((int) srcImage.getWidth(), (int) srcImage.getHeight(), pixels, PixelFormat.RGB);
     }
